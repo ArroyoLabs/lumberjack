@@ -6,11 +6,16 @@ class LogController extends \erdiko\controllers\Web
     
     use \erdiko\theme\traits\Controller;
 
+    /**
+     *
+     *
+     */
     public function get($request, $response, $args)
     {
 
-        //$service = new \app\models\Log();
-        //$events = $service->getEvents();
+        $logService = new \app\models\LogService($this->container->em);
+        $events = $logService->getEvents();
+        print "<pre>"; var_dump($events); die(); 
 
         $view = 'layouts/log.html';
         $themeData['theme'] = \erdiko\theme\Config::get($this->container->get('settings')['theme']);
@@ -51,6 +56,10 @@ class LogController extends \erdiko\controllers\Web
         return $this->container->theme->render($response, $view, $themeData);
     }
 
+    /**
+     *
+     *
+     */
     public function getDetail($request, $response, $args)
     {
         $this->container->logger->debug("/controller");
