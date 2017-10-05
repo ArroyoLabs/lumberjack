@@ -16,7 +16,7 @@ return [
             'driver' => 'pdo_mysql',
             'host' => getenv("DB_HOST"),
             'port' => getenv("DB_PORT"),
-            'database' => getenv("DB_DATABASE"),
+            'database' => getenv("DB_NAME"),
             'username' => 'root',
             'password' => getenv("DB_PASSWORD"),
             'charset' => 'utf8',
