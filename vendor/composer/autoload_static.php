@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit42da768d98d229ab762a532bf57694c4
+class ComposerStaticInit426a4004f9ef8a09492f893c846390a6
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -55,6 +55,7 @@ class ComposerStaticInit42da768d98d229ab762a532bf57694c4
             'Symfony\\Component\\Debug\\' => 24,
             'Symfony\\Component\\Console\\' => 26,
             'Slim\\Views\\' => 11,
+            'Slim\\Http\\' => 10,
             'Slim\\Flash\\' => 11,
             'Slim\\' => 5,
         ),
@@ -83,9 +84,11 @@ class ComposerStaticInit42da768d98d229ab762a532bf57694c4
         ),
         'D' => 
         array (
+            'Doctrine\\ORM\\' => 13,
             'Doctrine\\Instantiator\\' => 22,
             'Doctrine\\Common\\Lexer\\' => 22,
             'Doctrine\\Common\\Inflector\\' => 26,
+            'Doctrine\\Common\\Collections\\' => 28,
             'Doctrine\\Common\\Cache\\' => 22,
             'Doctrine\\Common\\Annotations\\' => 28,
             'Doctrine\\Common\\' => 16,
@@ -100,9 +103,9 @@ class ComposerStaticInit42da768d98d229ab762a532bf57694c4
         ),
         'phpDocumentor\\Reflection\\' => 
         array (
-            0 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
-            1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
-            2 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
+            0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
+            1 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
+            2 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
         ),
         'models\\' => 
         array (
@@ -164,6 +167,10 @@ class ComposerStaticInit42da768d98d229ab762a532bf57694c4
         array (
             0 => __DIR__ . '/..' . '/slim/twig-view/src',
         ),
+        'Slim\\Http\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/slim/http/src',
+        ),
         'Slim\\Flash\\' => 
         array (
             0 => __DIR__ . '/..' . '/slim/flash/src',
@@ -204,6 +211,10 @@ class ComposerStaticInit42da768d98d229ab762a532bf57694c4
         array (
             0 => __DIR__ . '/..' . '/nikic/fast-route/src',
         ),
+        'Doctrine\\ORM\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/doctrine/orm/lib/Doctrine/ORM',
+        ),
         'Doctrine\\Instantiator\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/instantiator/src/Doctrine/Instantiator',
@@ -215,6 +226,10 @@ class ComposerStaticInit42da768d98d229ab762a532bf57694c4
         'Doctrine\\Common\\Inflector\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/inflector/lib/Doctrine/Common/Inflector',
+        ),
+        'Doctrine\\Common\\Collections\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/doctrine/collections/lib/Doctrine/Common/Collections',
         ),
         'Doctrine\\Common\\Cache\\' => 
         array (
@@ -255,17 +270,9 @@ class ComposerStaticInit42da768d98d229ab762a532bf57694c4
         ),
         'D' => 
         array (
-            'Doctrine\\ORM\\' => 
-            array (
-                0 => __DIR__ . '/..' . '/doctrine/orm/lib',
-            ),
             'Doctrine\\DBAL\\' => 
             array (
                 0 => __DIR__ . '/..' . '/doctrine/dbal/lib',
-            ),
-            'Doctrine\\Common\\Collections\\' => 
-            array (
-                0 => __DIR__ . '/..' . '/doctrine/collections/lib',
             ),
         ),
     );
@@ -741,10 +748,10 @@ class ComposerStaticInit42da768d98d229ab762a532bf57694c4
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit42da768d98d229ab762a532bf57694c4::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit42da768d98d229ab762a532bf57694c4::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit42da768d98d229ab762a532bf57694c4::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit42da768d98d229ab762a532bf57694c4::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit426a4004f9ef8a09492f893c846390a6::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit426a4004f9ef8a09492f893c846390a6::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit426a4004f9ef8a09492f893c846390a6::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit426a4004f9ef8a09492f893c846390a6::$classMap;
 
         }, null, ClassLoader::class);
     }
