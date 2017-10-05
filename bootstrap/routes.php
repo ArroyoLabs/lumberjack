@@ -3,6 +3,7 @@
 
 $app->get('/', function ($request, $response, $args) {
     // Render index view
+    print "<pre>"; var_dump($response);die("poptarts");
     return $this->theme->render($response, 'slim.phtml', $args);
 });
 

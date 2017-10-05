@@ -12,15 +12,17 @@ class LogController extends \erdiko\controllers\Web
      */
     public function get($request, $response, $args)
     {
-
+        die("poptarts");
         $logService = new \app\models\LogService($this->container->em);
         $events = $logService->getEvents();
         print "<pre>"; var_dump($events); die(); 
 
+        //set $events to $themeData['page']['logevents'];
+
         $view = 'layouts/log.html';
         $themeData['theme'] = \erdiko\theme\Config::get($this->container->get('settings')['theme']);
 
-        $themeData['page'] = [
+        $themeData['page'] =  [
             'title' => "This is the Log Index Controller",
             'description' => "This is where all the log that were previously created",
             'logevents' => [
