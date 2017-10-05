@@ -12,7 +12,6 @@ class LogController extends \erdiko\controllers\Web
      */
     public function get($request, $response, $args)
     {
-        die("poptarts");
         $logService = new \app\models\LogService($this->container->em);
         $events = $logService->getEvents();
         print "<pre>"; var_dump($events); die(); 
