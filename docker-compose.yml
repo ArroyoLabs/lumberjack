@@ -21,13 +21,6 @@ services:
     image: erdiko/php-fpm:latest
     volumes_from: [data]
 
-  #redis:
-  #  container_name: erdiko_redis
-  #  env_file: ./environment.env
-  #  image: redis:latest
-  #  volumes:
-  #    - ../redis:/data
-
   db:
     container_name: erdiko_db
     env_file: ./environment.env
