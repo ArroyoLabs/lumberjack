@@ -1,0 +1,11 @@
+.DS_Store
+*.komodoproject
+*.sublime-project
+*.sublime-workspace
+.idea
+.idea/*
+var/*
+node_modules/*
+vendor/
+composer.lock
+/mysql

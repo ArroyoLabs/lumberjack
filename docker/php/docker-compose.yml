@@ -1,0 +1,15 @@
+version: '2.1'
+
+services:
+  php:
+    container_name: erdiko_php
+    image: erdiko_php_dev
+    build:
+      context: .
+    env_file: ./environment.env
+    volumes:
+      - ./conf.d/extra.ini:/usr/local/etc/php/conf.d/extra.ini
+    #ports:
+    #  - "9000:9000"
+    expose:
+      - "9000"
