@@ -18,6 +18,11 @@ class Event
      */
     protected $users_id;
 
+    /**
+     * @Column(type="string")
+     * @var string
+     */
+    protected $name;
 
     /**
      * @Column(type="string")
@@ -78,7 +83,7 @@ class Event
      *
      *
      */
-    public function getUsersId($users_id)
+    public function getUsersId()
     {
         return $this->users_id;
     }
@@ -96,7 +101,25 @@ class Event
      *
      *
      */
-    public function getDescription($description)
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     *
+     *
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    /**
+     *
+     *
+     */
+    public function getDescription()
     {
         return $this->description;
     }
@@ -114,7 +137,7 @@ class Event
      *
      *
      */
-    public function getTemplate($template)
+    public function getTemplate()
     {
         return $this->template;
     }
@@ -132,7 +155,7 @@ class Event
      *
      *
      */
-    public function getValueUnit($value_unit)
+    public function getValueUnit()
     {
         return $this->value_unit;
     }
@@ -150,7 +173,7 @@ class Event
      *
      *
      */
-    public function getCreatedAt($created_at)
+    public function getCreatedAt()
     {
         return $this->created_at;
     }
@@ -168,7 +191,7 @@ class Event
      *
      *
      */
-    public function getUpdatedAt($updated_at)
+    public function getUpdatedAt()
     {
         return $this->updated_at;
     }
@@ -183,7 +206,7 @@ class Event
      *
      *
      */
-    public function getEventTableName($event_table_name)
+    public function getEventTableName()
     {
         return $this->event_table_name;
     }
