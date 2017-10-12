@@ -34,6 +34,7 @@ class LogService
         return $this->_em->getRepository('app\entities\Event')->findAll();
     }
 
+
     public function addEvent($post) 
     {
         $eventEntity = new \app\entities\Event;
@@ -88,6 +89,16 @@ class LogService
 
         return $this->_em->flush();
 
+    }
+
+    public function getEventDetail($eventID)
+    {
+        if(empty($eventID)) {
+            throw new \Exception("EventID is required");
+        }
+        //die("eventdetail");
+        return $this->_em->getRepository('app\entities\EventValueNumber')
+                         ->findBy(array("event_id" => $eventID), array('created_at' => 'DESC'));
     }
 
 }

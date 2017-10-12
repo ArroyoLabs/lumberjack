@@ -5,9 +5,9 @@
 
     <div>{{page.description}}</div>
 
-    <div class="card-group">
+
       {% for log in page.logevents %}
-      <div class="card">
+      <div class="card col-sm-4 log-card">
         <img class="card-img-top" src="{{log.image_src}}" alt="Card image cap">
         <div class="card-body">
           <h4 class="card-title">{{log.name}}</h4>
@@ -25,7 +25,7 @@
       </div>
       {% endfor %}
       
-    </div>
+
     <br />
 
   {% endblock %}

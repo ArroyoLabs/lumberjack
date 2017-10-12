@@ -53,78 +53,37 @@ class LogController extends \erdiko\controllers\Web
      */
     public function getDetail($request, $response, $args)
     {
+        $eventID = (int)$args['param'];
+
+        $logService = new \app\models\LogService($this->container->em);
+        $eventDetails = $logService->getEventDetail($eventID);
+
+        //var_dump($eventDetails); die("details");
+        $entries = array();
+        foreach($eventDetails as $detail) {
+            $res['userID'] = $detail->getUsersId();
+            $res['value'] = $detail->getValue();
+            $res['time'] = $detail->getCreatedAt();
+            $res['message'] = "this portion needs a little bit of work";
+            $entries[] = $res;
+        }
+
+        //var_dump($entries); die("entries");
+
         $this->container->logger->debug("/controller");
         $view = 'layouts/logdetail.html';
 
         $themeData['theme'] = \erdiko\theme\Config::get($this->container->get('settings')['theme']);
-        $eventID = (int)$args['param'];
+        
         
         $this->container->logger->debug("param: ".$eventID);
 
         $themeData['page'] = [
             'title' => "Custom Log Stuff",
             'description' => "Description of the log you just clicked yourself.",
-            'entries' => [
-                
-            ]
+            'entries' => $entries
         
         ];
-
-        //GET METHOD
-
-
-        switch ($eventID) {
-            case 0:
-                //echo "i equals 0";
-                die('nuthin');
-                $themeData['page']['description'] = "There is nothing here";
-                break;
-            case 1:
-                //echo "i equals 1";
-                $themeData['page']['entries'] = [[
-                        'time' => "12:00:00",
-                        'userID' => 20,
-                        'message' => "Morty has walked 45 miles today"
-                    ], 
-                    [
-                        'time' => "1:00:00",
-                        'userID' => 21,
-                        'message' => "Rick has walked 2 miles today"
-                    ]];
-                $themeData['page']['description'] = "this is event log for " . $eventID;
-                break;
-            case 2:
-                //echo "i equals 2";
-                $themeData['page']['entries'] = [[
-                        'time' => "2:00:00",
-                        'userID' => 20,
-                        'message' => "Morty's blood alcohol level is at 0%"
-                    ], 
-                    [
-                        'time' => "3:00:00",
-                        'userID' => 21,
-                        'message' => "Rick's blood alcohol level is at 20%"
-                    ]];
-                $themeData['page']['description'] = "this is event log for " . $eventID;
-                break;
-            case 3:
-                //echo "i equals 2";
-                $themeData['page']['entries'] = [[
-                        'time' => "4:00:00",
-                        'userID' => 20,
-                        'message' => "Morty's math grade is at 4%"
-                    ], 
-                    [
-                        'time' => "5:00:00",
-                        'userID' => 21,
-                        'message' => "Rick's math grade is a at 100%"
-                    ]];
-                $themeData['page']['description'] = "this is event log for " . $eventID;
-                break;
-            default:
-                die('nuthin');
-                $themeData['page']['description'] = "There is nothing here"; 
-        }
     
         return $this->container->theme->render($response, $view, $themeData);
     }
