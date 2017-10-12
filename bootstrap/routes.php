@@ -41,6 +41,9 @@ $app->get('/examples/session', \app\controllers\examples\Session::class);
 // Doctrine (database) Tests
 $app->get('/examples/database', \app\controllers\examples\Database::class);
 
+$app->any('/ajax[/{action}]', \app\controllers\Ajax::class)
+    ->setName('ajax');
+
 // Web Controller
 $app->any('/examples/{action}/[{param}]', \app\controllers\Examples::class)
     ->setName('examples');
