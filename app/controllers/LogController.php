@@ -20,44 +20,29 @@ class LogController extends \erdiko\controllers\Web
             $res['eventID'] = $event->getId();
             $res['description'] = $event->getDescription();
             $res['name'] = $event->getName();
-
+            $res['href'] = '/log/detail/' . $res['eventID'];
+            $res['image_src'] = 'https://lorempixel.com/600/300/food/5/';
+            $res['latest_update'] = "Last update by aPerson x minutes ago";
             $logEvents[] = $res;
         }
 
         $view = 'layouts/log.html';
         $themeData['theme'] = \erdiko\theme\Config::get($this->container->get('settings')['theme']);
 
+        /*
+        title
+        eventID
+        description
+        image_src
+        latest_update
+        href
+        */
+
         $themeData['page'] =  [
             'title' => "This is the Log Index Controller",
             'description' => "This is where all the log that were previously created",
             'logevents' => $logEvents
         ];
-
-        //
-        // [
-        //     'title' => "Log 1",
-        //     'eventID' => 1,
-        //     'description' => "This is a filler content description for Log 1. These content will be dynamically generated in future.",
-        //     'image_src' => "https://lorempixel.com/600/300/food/5/",
-        //     'latest_update' => "Last update by aPerson x minutes ago",
-        //     'href' => "/log/detail/1"
-        // ],
-        // [
-        //     'title' => "Log 2",
-        //     'eventID' => 2,
-        //     'description' => "This is a filler content description for Log 2. These content will be dynamically generated in future.",
-        //     'image_src' => "https://lorempixel.com/600/300/food/5/",
-        //     'latest_update' => "Last update by aPerson x minutes ago",
-        //     'href' => "/log/detail/2"
-        // ],
-        // [
-        //     'title' => "Log 3",
-        //     'eventID' => 3,
-        //     'description' => "This is a filler content description for Log 3. These content will be dynamically generated in future.",
-        //     'image_src' => "https://lorempixel.com/600/300/food/5/",
-        //     'latest_update' => "Last update by aPerson x minutes ago",
-        //     'href' => "/log/detail/3"
-        // ]
 
         return $this->container->theme->render($response, $view, $themeData);
     }
