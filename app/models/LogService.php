@@ -39,7 +39,7 @@ class LogService
     {
         $eventEntity = new \app\entities\Event;
 
-        
+        //do created at and updated at here
 
         //DO SOME ERROR CHECKING HERE
 

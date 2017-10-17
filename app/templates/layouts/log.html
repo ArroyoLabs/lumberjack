@@ -6,8 +6,10 @@
     <div>{{page.description}}</div>
 
 
+    <!--TODO: find way to make the look more clean-->
+    <div class="card-group">
       {% for log in page.logevents %}
-      <div class="card col-sm-4 log-card">
+      <div class="card">
         <img class="card-img-top" src="{{log.image_src}}" alt="Card image cap">
         <div class="card-body">
           <h4 class="card-title">{{log.name}}</h4>
@@ -15,6 +17,9 @@
           <a href="{{log.href}}">
             <button type="button" class="btn btn-primary" href="">
               See Details
+            </button>
+            <button type="button" class="btn btn-secondary">
+              Edit
             </button>
           </a>
 
@@ -24,7 +29,7 @@
         </div>
       </div>
       {% endfor %}
-      
+    </div>
 
     <br />
 
