@@ -96,7 +96,7 @@ class LogService
         if(empty($eventID)) {
             throw new \Exception("EventID is required");
         }
-        //die("eventdetail");
+
         //TODO Store
         $result = array(); 
         $result["event"] = $this->_em->getRepository('app\entities\Event')
@@ -119,6 +119,38 @@ class LogService
         //var_dump($result["logs"]); die("events");
 
         return $result; 
+    }
+
+    public function uploadImg($file = null, $eventId = null) {
+
+        $fileName = "event" . $eventId . '.jpg';
+        $fileTemp = $_FILES['file']['tmp_name'];
+        $fileExt = explode("/", $_FILES['file']['type'])[1];
+
+        $validFileExt = ["gif", "jpeg", "jpg", "png"];
+
+        if(empty($file) ) {
+            throw new \Exception("The file is empty");
+        }
+
+        if(empty($eventId)){
+            throw new \Exception("Event ID is required");
+        }
+
+        if(!in_array($fileExt, $validFileExt)) {
+            throw new \Exception("Invalid File Extension");
+        }
+
+        //move file from temp to /var/
+
+        move_uploaded_file($fileTemp, "../var/uploads/".$fileName);
+
+        //die("after move");
+
+        //var_dump($file); var_dump($eventId);die('file');
+
+
+
     }
 
 }

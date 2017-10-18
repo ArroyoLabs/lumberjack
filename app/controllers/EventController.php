@@ -103,11 +103,14 @@ class EventController extends \erdiko\controllers\Web
     {
         $view = 'layouts/update.html';
 
+        $eventId = $args["param"];
+
         $themeData['theme'] = \erdiko\theme\Config::get($this->container->get('settings')['theme']);
 
         $themeData['page'] = [
             'title' => "This is the Log Edit Controller",
             'description' => "This is where all the log we want are to be created",
+            'event_id' => $eventId
         ];
 
 
@@ -119,12 +122,25 @@ class EventController extends \erdiko\controllers\Web
     public function postUpdate($request, $response, $args)
     {
         try {
-            var_dump($_POST);
+            //var_dump($_POST);
         } catch (\Exception $e) {
-            var_dump($e);
+            //var_dump($e);
         }
     }
 
+    public function postUpdateImg($request, $response, $args)
+    {
+        //var_dump($_FILES); var_dump($_POST);die("diee");
+
+        $eventId = $_POST['event_id'];
+        $eventService = new \app\models\LogService($this->container->em);
+
+        try {      
+            $eventService->uploadImg($_FILES['file'], $eventId);
+        } catch (\Exception $e) {
+            $message = $e->getMessage();
+        }
+    }
     /**
      *
      *
