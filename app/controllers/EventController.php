@@ -20,7 +20,7 @@ class EventController extends \erdiko\controllers\Web
             $res['eventID'] = $event->getId();
             $res['description'] = $event->getDescription();
             $res['name'] = $event->getName();
-            $res['href'] = '/log/detail/' . $res['eventID'];
+            $res['href'] = '/event/detail/' . $res['eventID'];
             $res['image_src'] = 'https://lorempixel.com/600/300/food/5/';
             $res['latest_update'] = "Last update by aPerson x minutes ago";
             $logEvents[] = $res;
@@ -111,8 +111,10 @@ class EventController extends \erdiko\controllers\Web
         $logService = new \app\models\LogService($this->container->em);
         $eventDetails = $logService->getEventDetail($eventID);
 
+        //var_dump($eventDetails); die();
+
         $entries = array();
-        foreach($eventDetails as $detail) {
+        foreach($eventDetails['logs'] as $detail) {
             $res['userID'] = $detail->getUsersId();
             $res['value'] = $detail->getValue();
             $res['time'] = $detail->getCreatedAt();
@@ -129,7 +131,6 @@ class EventController extends \erdiko\controllers\Web
         $this->container->logger->debug("param: ".$eventID);
 
         $themeData['page'] = [
-            'title' => "Custom Log Stuff",
             'description' => "Description of the log you just clicked yourself.",
             'entries' => $entries
         

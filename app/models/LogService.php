@@ -97,8 +97,28 @@ class LogService
             throw new \Exception("EventID is required");
         }
         //die("eventdetail");
-        return $this->_em->getRepository('app\entities\EventValueNumber')
+        //TODO Store
+        $result = array(); 
+        $result["event"] = $this->_em->getRepository('app\entities\Event')
+                         ->findOneBy(array("id" => $eventID)); 
+
+        // TODO if event not found, throw an exception
+
+        if(empty($result["event"])) {
+            throw new \Exception("Event is not found");
+        }
+        //var_dump(); die("events");
+        $eventName = $result["event"]->getName();
+
+        $result["event_name"] = $eventName;
+
+
+        $result["logs"] = $this->_em->getRepository('app\entities\EventValueNumber')
                          ->findBy(array("event_id" => $eventID), array('created_at' => 'DESC'));
+
+        //var_dump($result["logs"]); die("events");
+
+        return $result; 
     }
 
 }
