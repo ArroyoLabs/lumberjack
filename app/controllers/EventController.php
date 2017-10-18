@@ -131,6 +131,7 @@ class EventController extends \erdiko\controllers\Web
         $this->container->logger->debug("param: ".$eventID);
 
         $themeData['page'] = [
+            'event_name' => $eventDetails['event_name'],
             'description' => "Description of the log you just clicked yourself.",
             'entries' => $entries
         
