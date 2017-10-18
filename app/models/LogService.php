@@ -143,7 +143,7 @@ class LogService
 
         //move file from temp to /var/
 
-        move_uploaded_file($fileTemp, "../var/uploads/".$fileName);
+        move_uploaded_file($fileTemp, "../../var/uploads/".$fileName);
 
         //die("after move");
 
