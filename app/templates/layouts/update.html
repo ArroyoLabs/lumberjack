@@ -1,0 +1,36 @@
+{% extends "layouts/1column.html" %}
+
+  {% block column1 %}
+    <h1>{{page.title}}</h1>
+
+    <div>{{page.description}}</div>
+
+    <form action="/event/update" method="POST">
+      <div class="form-group">
+        <label for="">Name of Event</label>
+        <input name="event_title" class="form-control" placeholder="Jogging, Cup Stacking, etc.">
+        <small id="emailHelp" class="form-text text-muted">What's in a name? That which we call a rose by any other name would smell as sweet. -Shakespeare</small>
+      </div>
+      
+      <div class="form-group">
+        <label for="">Description</label>
+        <input name="event_description" class="form-control" placeholder="Jogging, Cup Stacking, etc.">
+        <small id="emailHelp" class="form-text text-muted">Please insert description of the event in detail</small>
+      </div>
+
+      <div class="form-group">
+        <label>Unit of Value</label>
+        <input name="unit_value" class="form-control" placeholder="km, barrels, glass of 12oz beer">
+        <small class="form-text text-muted">Define the unit of value of integer (This should only show when event type above is set to 'int') </small>
+      </div>
+      
+      <div class="form-group">
+        <label for="">Template</label>
+        <input name="template" class="form-control" id="" aria-describedby="emailHelp" placeholder="User1 has drank int_val int_unit">
+        <small class="form-text text-muted">Template provides means to customize how the event log</small>
+      </div>
+      
+      <button type="submit" class="btn btn-primary">Create</button>
+    </form> <br>
+
+  {% endblock %}

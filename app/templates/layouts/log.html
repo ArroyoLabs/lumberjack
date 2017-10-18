@@ -14,14 +14,18 @@
         <div class="card-body">
           <h4 class="card-title">{{log.name}}</h4>
           <p class="card-text">{{log.description}}</p>
-          <a href="{{log.href}}">
+          <a href="{{log.detail_href}}">
             <button type="button" class="btn btn-primary" href="">
               See Details
             </button>
+          </a>
+
+          <a href="{{log.update_href}}">
             <button type="button" class="btn btn-secondary">
               Edit
             </button>
           </a>
+          
 
         </div>
         <div class="card-footer">

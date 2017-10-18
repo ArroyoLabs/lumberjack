@@ -20,7 +20,8 @@ class EventController extends \erdiko\controllers\Web
             $res['eventID'] = $event->getId();
             $res['description'] = $event->getDescription();
             $res['name'] = $event->getName();
-            $res['href'] = '/event/detail/' . $res['eventID'];
+            $res['detail_href'] = '/event/detail/' . $res['eventID'];
+            $res['update_href'] = '/event/update/' . $res['eventID'];
             $res['image_src'] = 'https://lorempixel.com/600/300/food/5/';
             $res['latest_update'] = "Last update by aPerson x minutes ago";
             $logEvents[] = $res;
@@ -88,16 +89,40 @@ class EventController extends \erdiko\controllers\Web
 
             // service method call and pass $params
             
-            //SEE THE RESULT RETURN TRUE OR FALSE
             $result = $logService->addEvent($params);
 
-            //I feel like there's a slim way of doing this
-            $this->redirect('/event'); //header("Location: /log"); exit;
+            $this->redirect('/event');
             
         } catch (\Exception $e) {
             var_dump($e);
         }
     
+    }
+
+    public function getUpdate($request, $response, $args)
+    {
+        $view = 'layouts/update.html';
+
+        $themeData['theme'] = \erdiko\theme\Config::get($this->container->get('settings')['theme']);
+
+        $themeData['page'] = [
+            'title' => "This is the Log Edit Controller",
+            'description' => "This is where all the log we want are to be created",
+        ];
+
+
+
+        return $this->container->theme->render($response, $view, $themeData);
+
+    }
+
+    public function postUpdate($request, $response, $args)
+    {
+        try {
+            var_dump($_POST);
+        } catch (\Exception $e) {
+            var_dump($e);
+        }
     }
 
     /**

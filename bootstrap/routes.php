@@ -14,8 +14,3 @@ $app->any('/event[/{action}]', \app\controllers\EventController::class)
 // // Web Controller
 $app->any('/event/{action}/[{param}]', \app\controllers\EventController::class)
     ->setName('logactionparam');
-
-// Web Controller
-
-// $app->any('/event[/{action}]', \app\controllers\LogEventsController::class)
-//     ->setName('createevent');
