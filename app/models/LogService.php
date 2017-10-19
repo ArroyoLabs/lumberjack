@@ -123,10 +123,10 @@ class LogService
 
     public function uploadImg($file = null, $eventId = null) {
 
-        $fileName = "event" . $eventId . '.jpg';
-        $fileTemp = $_FILES['file']['tmp_name'];
         $fileExt = explode("/", $_FILES['file']['type'])[1];
-
+        $fileName = "event" . $eventId .'.'. $fileExt;
+        $fileTemp = $_FILES['file']['tmp_name'];
+        
         $validFileExt = ["gif", "jpeg", "jpg", "png"];
 
         if(empty($file) ) {
@@ -143,13 +143,9 @@ class LogService
 
         //move file from temp to /var/
 
-        move_uploaded_file($fileTemp, "../../var/uploads/".$fileName);
+        move_uploaded_file($fileTemp, "../var/uploads/".$fileName);
 
-        //die("after move");
-
-        //var_dump($file); var_dump($eventId);die('file');
-
-
+        copy("../var/uploads/".$fileName, "../public/images/events/".$fileName);
 
     }
 

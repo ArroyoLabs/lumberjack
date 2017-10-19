@@ -135,6 +135,8 @@ class EventController extends \erdiko\controllers\Web
         $eventId = $_POST['event_id'];
         $eventService = new \app\models\LogService($this->container->em);
 
+        $this->redirect('/event');
+
         try {      
             $eventService->uploadImg($_FILES['file'], $eventId);
         } catch (\Exception $e) {
