@@ -22,7 +22,7 @@ class EventController extends \erdiko\controllers\Web
             $res['name'] = $event->getName();
             $res['detail_href'] = '/event/detail/' . $res['eventID'];
             $res['update_href'] = '/event/update/' . $res['eventID'];
-            $res['image_src'] = 'https://lorempixel.com/600/300/food/5/';
+            $res['image_src'] = '/public/images/events/' . $res['image'];
             $res['latest_update'] = "Last update by aPerson x minutes ago";
             $logEvents[] = $res;
         }
@@ -122,25 +122,24 @@ class EventController extends \erdiko\controllers\Web
     public function postUpdate($request, $response, $args)
     {
         try {
-            //var_dump($_POST);
+
         } catch (\Exception $e) {
-            //var_dump($e);
+            var_dump($e); die('postUpdateError');
         }
     }
 
     public function postUpdateImg($request, $response, $args)
     {
-        //var_dump($_FILES); var_dump($_POST);die("diee");
 
         $eventId = $_POST['event_id'];
         $eventService = new \app\models\LogService($this->container->em);
 
-        $this->redirect('/event');
-
         try {      
             $eventService->uploadImg($_FILES['file'], $eventId);
+
+            $this->redirect('/event');
         } catch (\Exception $e) {
-            $message = $e->getMessage();
+            var_dump($e); die('3');
         }
     }
     /**

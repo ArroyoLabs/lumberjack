@@ -123,6 +123,8 @@ class LogService
 
     public function uploadImg($file = null, $eventId = null) {
 
+        $eventEntity = new \app\entities\Event;
+
         $fileExt = explode("/", $_FILES['file']['type'])[1];
         $fileName = "event" . $eventId .'.'. $fileExt;
         $fileTemp = $_FILES['file']['tmp_name'];
@@ -141,12 +143,21 @@ class LogService
             throw new \Exception("Invalid File Extension");
         }
 
-        //move file from temp to /var/
-
         move_uploaded_file($fileTemp, "../var/uploads/".$fileName);
 
         copy("../var/uploads/".$fileName, "../public/images/events/".$fileName);
 
+
+        $entity = $this->_em->getRepository('app\entities\Event')
+                       ->findBy(array("id" => $eventId));
+
+            
+
+        $entity[0]->setImage($fileName);
+
+        $this->_em->persist($entity[0]);
+
+        $this->_em->flush();
     }
 
 }

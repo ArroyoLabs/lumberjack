@@ -60,6 +60,12 @@ class Event
      */
     protected $event_table_name;
 
+    /**
+     * @Column(type="string")
+     * @var string
+     */
+    protected $image;
+
 
     /**
      *
@@ -218,6 +224,24 @@ class Event
     public function setEventTableName($event_table_name)
     {
         $this->event_table_name = $event_table_name;
+    }
+
+    /**
+     *
+     *
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     *
+     *
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
     }
 
 }
