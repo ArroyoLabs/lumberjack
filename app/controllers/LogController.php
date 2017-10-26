@@ -13,7 +13,13 @@ class LogController extends \erdiko\controllers\Web
 
     function postAddInt($request, $response, $args)
     {
-        var_dump($_POST); die('numberedLog');
+        $logService = new \app\models\LogService($this->container->em);
+        
+        $params = (Object) array_filter($_POST);
+
+        $logService->addIntLog($params);
+
+        
     }
 
     function postAddStatus($request, $response, $args)
