@@ -9,8 +9,14 @@ $app->get('/', function ($request, $response, $args) {
 // Web Controller
 
 $app->any('/event[/{action}]', \app\controllers\EventController::class)
+    ->setName('eventaction');
+
+$app->any('/event/{action}/[{param}]', \app\controllers\EventController::class)
+    ->setName('eventactionparam');
+
+$app->any('/log[/{action}]', \app\controllers\LogController::class)
     ->setName('logaction');
 
-// // Web Controller
-$app->any('/event/{action}/[{param}]', \app\controllers\EventController::class)
-    ->setName('logactionparam');
+$app->any('/log/{action}/[{param}]', \app\controllers\LogController::class)
+    ->setName('logactionparams');
+
