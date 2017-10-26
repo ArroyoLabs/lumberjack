@@ -12,8 +12,8 @@ class EventController extends \erdiko\controllers\Web
      */
     public function get($request, $response, $args)
     {
-        $logService = new \app\models\LogService($this->container->em);
-        $events = $logService->getEvents();
+        $eventService = new \app\models\EventService($this->container->em);
+        $events = $eventService->getEvents();
 
         $logEvents = array();
         foreach ($events as $event){
@@ -72,7 +72,7 @@ class EventController extends \erdiko\controllers\Web
 
         try {
             
-            $logService = new \app\models\LogService($this->container->em);
+            $eventService = new \app\models\EventService($this->container->em);
 
             //collect id of the one logged in
             $_POST['users_id'] = '99';
@@ -89,7 +89,7 @@ class EventController extends \erdiko\controllers\Web
 
             // service method call and pass $params
             
-            $result = $logService->addEvent($params);
+            $result = $eventService->addEvent($params);
 
             $this->redirect('/event');
             
@@ -132,7 +132,7 @@ class EventController extends \erdiko\controllers\Web
     {
 
         $eventId = $_POST['event_id'];
-        $eventService = new \app\models\LogService($this->container->em);
+        $eventService = new \app\models\EventService($this->container->em);
 
         try {      
             $eventService->uploadImg($_FILES['file'], $eventId);
@@ -150,8 +150,8 @@ class EventController extends \erdiko\controllers\Web
     {
         $eventID = (int)$args['param'];
 
-        $logService = new \app\models\LogService($this->container->em);
-        $eventDetails = $logService->getEventDetail($eventID);
+        $eventService = new \app\models\EventService($this->container->em);
+        $eventDetails = $eventService->getEventDetail($eventID);
 
         //var_dump($eventDetails); die();
 

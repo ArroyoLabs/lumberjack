@@ -11,7 +11,7 @@
  */
 namespace app\models;
 
-class LogService
+class EventService
 {
 
     protected $_em = null;
