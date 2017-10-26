@@ -50,7 +50,7 @@ class EventController extends \erdiko\controllers\Web
 
     /**
      *
-     *
+     * Load the create page
      */
     public function getCreate($request, $response, $args)
     {
@@ -67,6 +67,10 @@ class EventController extends \erdiko\controllers\Web
         return $this->container->theme->render($response, $view, $themeData);
     }
 
+    /**
+     *
+     * Create new event page
+     */
     public function postCreate($request, $response, $args)
     {
 
@@ -78,10 +82,9 @@ class EventController extends \erdiko\controllers\Web
             $_POST['users_id'] = '99';
             $_POST['event_table_name'] = "hardcoded for now";
 
-            $now = time();//new DateTime();
+            $now = time();
             $date = date("Y-m-d h:i:s", $now);
 
-            //var_dump($date); die('date');
             $_POST['created_at'] = $date;
             $_POST['updated_at'] = $date;
 

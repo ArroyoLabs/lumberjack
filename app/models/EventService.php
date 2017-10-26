@@ -1,8 +1,8 @@
 <?php
 /**
- * Log Model
+ * Event Model
  *
- * Model for Logs
+ * Model for Event
  *
  * @category    app
  * @package     models
@@ -107,7 +107,8 @@ class EventService
         if(empty($result["event"])) {
             throw new \Exception("Event is not found");
         }
-        //var_dump(); die("events");
+
+
         $eventName = $result["event"]->getName();
 
         $result["event_name"] = $eventName;
@@ -115,8 +116,6 @@ class EventService
 
         $result["logs"] = $this->_em->getRepository('app\entities\EventValueNumber')
                          ->findBy(array("event_id" => $eventID), array('created_at' => 'DESC'));
-
-        //var_dump($result["logs"]); die("events");
 
         return $result; 
     }
@@ -150,7 +149,6 @@ class EventService
 
         $entity = $this->_em->getRepository('app\entities\Event')
                        ->findBy(array("id" => $eventId));
-
             
 
         $entity[0]->setImage($fileName);

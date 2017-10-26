@@ -2,9 +2,9 @@
 namespace app\entities;
 
 /**
- * @Entity @Table(name="event_value_string")
+ * @Entity @Table(name="log_value_number")
  */
- class EventValueString
+ class LogValueNumber
  {
     /**
      * @Id @GeneratedValue @Column(type="integer")
@@ -25,10 +25,10 @@ namespace app\entities;
     protected $users_id;
 
     /**
-     * @Column(type="string")
+     * @Column(type="integer")
      * @var integer
      */
-    protected $value;
+    protected $value; //Float
 
     /**
      * @Column(type="string")
@@ -58,7 +58,7 @@ namespace app\entities;
      *
      *
      */
-    public function getEventId($event_id)
+    public function getEventId()
     {
         return $this->event_id;
     }
@@ -76,7 +76,7 @@ namespace app\entities;
      *
      *
      */
-    public function getUsersId($users_id)
+    public function getUsersId()
     {
         return $this->users_id;
     }
@@ -94,7 +94,7 @@ namespace app\entities;
      *
      *
      */
-    public function getValue($value)
+    public function getValue()
     {
         return $this->value;
     }
@@ -112,7 +112,7 @@ namespace app\entities;
      *
      *
      */
-    public function getCreatedAt($created_at)
+    public function getCreatedAt()
     {
         return $this->created_at;
     }
