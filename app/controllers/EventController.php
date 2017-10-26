@@ -22,7 +22,7 @@ class EventController extends \erdiko\controllers\Web
             $res['name'] = $event->getName();
             $res['detail_href'] = '/event/detail/' . $res['eventID'];
             $res['update_href'] = '/event/update/' . $res['eventID'];
-            $res['image_src'] = '/public/images/events/' . $res['image'];
+            $res['image_src'] = '/images/events/' . $res['image'];
             $res['latest_update'] = "Last update by aPerson x minutes ago";
             $logEvents[] = $res;
         }
