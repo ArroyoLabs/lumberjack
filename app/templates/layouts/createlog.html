@@ -1,0 +1,61 @@
+{% extends "layouts/1column.html" %}
+
+  {% block column1 %}
+
+  <!-- depending on the event, either show numbered log or status log -->
+    <div>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/event">Home</a></li>
+            <li class="breadcrumb-item"><a href="#">page.event_name</a></li>
+            <li class="breadcrumb-item active">Create</li>
+        </ol>
+    </div>
+    <div>
+        Numbered Log
+        <form action="/log/addInt" method="POST">
+            <div class="form-group">
+                <label for="user_id">Example select</label>
+                <select name="user_id" class="form-control" id="user_id">
+                    <!--these are hard coded until user db is imported-->
+                    <option>1 John</option>
+                    <option>2 Paul</option>
+                    <option>3 George</option>
+                    <option>4 Ringo</option>
+                    <option>5 Bob</option>
+                </select>
+            </div>
+          
+            <div class="form-group">
+                <input type="number" name="number_value" class="form-control" placeholder="Numbered Value" aria-label="Username" aria-describedby="numbered_value">
+            </div>
+          
+            <button type="submit" class="btn btn-primary">Create</button>
+        </form> <br>
+    </div>
+        
+    <div>
+        Status Log
+        <form action="/log/addStatusLog" method="POST">
+            <div class="form-group">
+
+                <label for="user_id">Example select</label>
+                <select name="user_id" class="form-control" id="user_id">
+                    <!--these are hard coded until user db is imported-->
+                    <option>1 John</option>
+                    <option>2 Paul</option>
+                    <option>3 George</option>
+                    <option>4 Ringo</option>
+                    <option>5 Bob</option>
+                </select>
+
+            </div>
+            
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Write the nature of the log here" aria-label="Username" aria-describedby="numbered_value">
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Create</button>
+        </form> <br>
+    </div>
+
+  {% endblock %}

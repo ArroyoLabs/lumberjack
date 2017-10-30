@@ -156,8 +156,6 @@ class EventController extends \erdiko\controllers\Web
         $eventService = new \app\models\EventService($this->container->em);
         $eventDetails = $eventService->getEventDetail($eventID);
 
-        //var_dump($eventDetails); die();
-
         $entries = array();
         foreach($eventDetails['logs'] as $detail) {
             $res['userID'] = $detail->getUsersId();
@@ -182,6 +180,23 @@ class EventController extends \erdiko\controllers\Web
         
         ];
     
+        return $this->container->theme->render($response, $view, $themeData);
+    }
+
+    public function getCreatelog($request, $response, $args)
+    {
+        $view = 'layouts/createlog.html';
+
+        $themeData['theme'] = \erdiko\theme\Config::get($this->container->get('settings')['theme']);
+
+        $themeData['page'] = [
+            // 'title' => "This is the Log Edit Controller",
+            // 'description' => "This is where all the log we want are to be created",
+            // 'event_id' => $eventId
+        ];
+
+
+
         return $this->container->theme->render($response, $view, $themeData);
     }
 

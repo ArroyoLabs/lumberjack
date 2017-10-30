@@ -5,83 +5,19 @@
 
     <div>{{page.description}}</div>
 
-    <ul class="nav nav-tabs" id="myTab" role="tablist">
-        <li class="nav-item">
-            <a class="nav-link active" id="img-tab" data-toggle="tab" href="#img" role="tab" aria-controls="img" aria-selected="true">Event Image</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" id="int-tab" data-toggle="tab" href="#int" role="tab" aria-controls="int" aria-selected="false">Numbered Log</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" id="str-tab" data-toggle="tab" href="#str" role="tab" aria-controls="str" aria-selected="false">Status Log</a>
-        </li>
-    </ul>
-    <div class="tab-content" id="myTabContent">
-        <div class="tab-pane fade show active" id="img" role="tabpanel" aria-labelledby="img-tab">
+    <div class="tab-pane fade show active" id="img" role="tabpanel" aria-labelledby="img-tab">
 
-          Profile image goes here
+        Profile image goes here
 
-           <form action="/event/updateImg" method="POST"  enctype="multipart/form-data">
-              <label class="custom-file">
-                <input type="file" name="file" id="file" class="custom-file-input" value="1" required>
-                <span class="custom-file-control"></span>
-              </label>
-              <input type="hidden" name="event_id" value="{{page.event_id}}" />
-              <button type="submit" class="btn btn-primary">Submit</button>
-          </form>
+        <form action="/event/updateImg" method="POST"  enctype="multipart/form-data">
+            <label class="custom-file">
+            <input type="file" name="file" id="file" class="custom-file-input" value="1" required>
+            <span class="custom-file-control"></span>
+            </label>
+            <input type="hidden" name="event_id" value="{{page.event_id}}" />
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
 
-        </div>
-      
-        <div class="tab-pane fade" id="int" role="tabpanel" aria-labelledby="int-tab">
-            Numbered Log
-            <form action="/log/addInt" method="POST">
-                <div class="form-group">
-                    <label for="user_id">Example select</label>
-                    <select name="user_id" class="form-control" id="user_id">
-                        <!--these are hard coded until user db is imported-->
-                        <option>1 John</option>
-                        <option>2 Paul</option>
-                        <option>3 George</option>
-                        <option>4 Ringo</option>
-                        <option>5 Bob</option>
-                    </select>
-                </div>
-              
-                <div class="form-group">
-                    <input type="number" name="number_value" class="form-control" placeholder="Numbered Value" aria-label="Username" aria-describedby="numbered_value">
-                </div>
-              
-                <button type="submit" class="btn btn-primary">Create</button>
-            </form> <br>
-
-        </div>
-
-
-        <div class="tab-pane fade" id="str" role="tabpanel" aria-labelledby="str-tab">
-            Status Log
-            <form action="/log/addStatusLog" method="POST">
-                <div class="form-group">
-
-                    <label for="user_id">Example select</label>
-                    <select name="user_id" class="form-control" id="user_id">
-                        <!--these are hard coded until user db is imported-->
-                        <option>1 John</option>
-                        <option>2 Paul</option>
-                        <option>3 George</option>
-                        <option>4 Ringo</option>
-                        <option>5 Bob</option>
-                    </select>
-
-                </div>
-              
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Write the nature of the log here" aria-label="Username" aria-describedby="numbered_value">
-                </div>
-              
-                <button type="submit" class="btn btn-primary">Create</button>
-            </form> <br>
-
-        </div>
     </div>
 
   {% endblock %}
