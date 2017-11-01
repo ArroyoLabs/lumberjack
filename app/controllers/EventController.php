@@ -22,7 +22,7 @@ class EventController extends \erdiko\controllers\Web
             $res['name'] = $event->getName();
             $res['detail_href'] = '/event/detail/' . $res['eventID'];
             $res['update_href'] = '/event/update/' . $res['eventID'];
-            $res['image_src'] = '/images/events/' . $event->getImage();
+            $res['image_src'] = (!empty($event->getImage())) ? '/images/events/' . $event->getImage() : '/images/placeholder.png';
             $res['latest_update'] = "Last update by aPerson x minutes ago";
             $logEvents[] = $res;
         }
@@ -176,7 +176,8 @@ class EventController extends \erdiko\controllers\Web
         $themeData['page'] = [
             'event_name' => $eventDetails['event_name'],
             'description' => "Description of the log you just clicked yourself.",
-            'entries' => $entries
+            'entries' => $entries,
+            'createlog_href' => '/event/createlog/' . $eventID
         
         ];
     
@@ -185,14 +186,18 @@ class EventController extends \erdiko\controllers\Web
 
     public function getCreatelog($request, $response, $args)
     {
+        $eventID = (int)$args['param'];
+
+        $eventService = new \app\models\EventService($this->container->em);
+        $eventDetails = $eventService->getEventDetail($eventID);
+
         $view = 'layouts/createlog.html';
 
         $themeData['theme'] = \erdiko\theme\Config::get($this->container->get('settings')['theme']);
 
         $themeData['page'] = [
-            // 'title' => "This is the Log Edit Controller",
-            // 'description' => "This is where all the log we want are to be created",
-            // 'event_id' => $eventId
+            'event_name' => $eventDetails['event_name'],
+            'eventdetail_href' => '/event/detail/' . $eventID
         ];
 
 
