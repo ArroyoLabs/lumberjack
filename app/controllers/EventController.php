@@ -108,14 +108,32 @@ class EventController extends \erdiko\controllers\Web
 
         $eventId = $args["param"];
 
+        $eventService = new \app\models\EventService($this->container->em);
+        $eventDetails = $eventService->getEventDetail($eventId);
+        
+
+        //Handles Img
+        $eventImg = (!empty($eventDetails["event"]->getImage())) ? '/images/events/' . $eventDetails["event"]->getImage() : '/images/placeholder.png';//$eventDetails["event"]->getImage();
+
+        //Handles Forms
+        $eventName = $eventDetails["event"]->getName();
+        $eventDescription = $eventDetails["event"]->getDescription();
+        $eventTemplate = $eventDetails["event"]->getTemplate();
+        $eventValueUnit = $eventDetails["event"]->getValueUnit();
+
+
         $themeData['theme'] = \erdiko\theme\Config::get($this->container->get('settings')['theme']);
 
         $themeData['page'] = [
             'title' => "This is the Log Edit Controller",
             'description' => "This is where all the log we want are to be created",
-            'event_id' => $eventId
+            'event_id' => $eventId,
+            'img_src' => $eventImg,
+            'event_name' => $eventName,
+            'event_description' => $eventDescription,
+            'event_template' => $eventTemplate,
+            'event_unit' => $eventValueUnit
         ];
-
 
 
         return $this->container->theme->render($response, $view, $themeData);
@@ -126,6 +144,21 @@ class EventController extends \erdiko\controllers\Web
     {
         try {
 
+            $eventService = new \app\models\EventService($this->container->em);
+
+            $now = time();
+            $date = date("Y-m-d h:i:s", $now);
+
+            $_POST['updated_at'] = $date;
+
+            $params = (Object)array_filter($_POST);	// treat this as object
+            
+            // service method call and pass $params
+            
+            $result = $eventService->editEvent($params);
+
+            $this->redirect('/event');
+            
         } catch (\Exception $e) {
             var_dump($e); die('postUpdateError');
         }

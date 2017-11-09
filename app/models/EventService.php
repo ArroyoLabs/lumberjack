@@ -35,6 +35,42 @@ class EventService
     }
 
 
+    public function editEvent($post)
+    {
+
+        if(empty($post->event_id)) {
+            throw new \Exception("EventID is required");
+        }
+
+        //TODO Store
+        $eventEntity = $this->_em->getRepository('app\entities\Event')
+                         ->findOneBy(array("id" => $post->event_id)); 
+
+        if(property_exists($post,'event_name') || !empty($post->event_name)) {
+            $eventEntity->setName($post->event_name);
+        }
+
+        if(property_exists($post,'event_description') || !empty($post->event_description)) {
+            $eventEntity->setDescription($post->event_description);
+        }
+
+        if(property_exists($post,'event_template') || !empty($post->event_template)) {
+            $eventEntity->setTemplate($post->event_template);
+        }
+
+        if(property_exists($post,'event_unit') || !empty($post->event_unit)) {
+            $eventEntity->setValueUnit($post->event_unit);
+        }
+        
+
+        $eventEntity->setUpdatedAt($post->updated_at);
+
+
+        $this->_em->persist($eventEntity);
+        
+        $this->_em->flush();
+    }
+
     public function addEvent($post) 
     {
         $eventEntity = new \app\entities\Event;

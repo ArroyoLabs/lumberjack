@@ -7,17 +7,56 @@
 
     <div class="tab-pane fade show active" id="img" role="tabpanel" aria-labelledby="img-tab">
 
-        Profile image goes here
-
-        <form action="/event/updateImg" method="POST"  enctype="multipart/form-data">
+      <div class="card" style="width: 20rem;">
+        <img class="card-img-top" src="{{page.img_src}}" alt="Card image cap">
+        <div class="card-body">
+          <form action="/event/updateImg" method="POST"  enctype="multipart/form-data">
             <label class="custom-file">
             <input type="file" name="file" id="file" class="custom-file-input" value="1" required>
             <span class="custom-file-control"></span>
             </label>
             <input type="hidden" name="event_id" value="{{page.event_id}}" />
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">Update Image</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- <div class="card"> 
+      
+      -->
+        
+        <form action="/event/update" method="POST" enctype="multipart/form-data">
+        
+
+          <div class="col-sm-11">
+            <label class="col-form-label" for="event_name">Event Name</label>
+            <input class="form-control" name="event_name" type="text" placeholder="{{page.event_name}}" id="event_name">
+          </div>
+
+          <div class="col-sm-11">
+            <label class="col-form-label" for="event_description">Event Description</label>
+            <input class="form-control" name="event_description" type="text" placeholder="{{page.event_description}}" id="event_description">
+          </div>
+          
+          <div class="col-sm-11">
+            <label class="col-form-label" for="event_template">Event Template</label>
+            <input class="form-control" name="event_template" type="text" placeholder="{{page.event_template}}" id="event_template">
+          </div>
+
+          <div class="col-sm-11">
+            <label class="col-form-label" for="event_unit">Event Unit</label>
+            <input class="form-control" name="event_unit" type="text" placeholder="{{page.event_unit}}" id="event_unit">
+          </div>
+
+          <input type="hidden" name="event_id" value="{{page.event_id}}" />
+          <div class="col-sm-11">
+            <button type="submit" class="btn btn-primary">Update Event</button>
+          </div>
+          
         </form>
 
-    </div>
+      </div>
+
+    <!-- </div> -->
 
   {% endblock %}
