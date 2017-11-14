@@ -10,48 +10,34 @@
             <li class="breadcrumb-item active">Create</li>
         </ol>
     </div>
+
     <div>
-        Numbered Log
-        <form action="/log/addInt" method="POST">
+        {{page.form.name}} <br>
+        <form action="/event/createlog" method="POST">
+            <div class="form-group">
+                <input type="hidden" name="event_id" value="{{page.event_id}}" />
+            </div>
             <div class="form-group">
                 <label for="user_id">Example select</label>
                 <select name="user_id" class="form-control" id="user_id">
-                    <!--these are hard coded until user db is imported-->
+                    
+                    <!-- these are hard coded until user db is imported -->
                     <option>1 John</option>
                     <option>2 Paul</option>
                     <option>3 George</option>
                     <option>4 Ringo</option>
                     <option>5 Bob</option>
                 </select>
-            </div>
-          
-            <div class="form-group">
-                <input type="number" name="number_value" class="form-control" placeholder="Numbered Value" aria-label="Username" aria-describedby="numbered_value">
-            </div>
-          
-            <button type="submit" class="btn btn-primary">Create</button>
-        </form> <br>
-    </div>
-        
-    <div>
-        Status Log
-        <form action="/log/addStatusLog" method="POST">
-            <div class="form-group">
-
-                <label for="user_id">Example select</label>
-                <select name="user_id" class="form-control" id="user_id">
-                    <!--these are hard coded until user db is imported-->
-                    <option>1 John</option>
-                    <option>2 Paul</option>
-                    <option>3 George</option>
-                    <option>4 Ringo</option>
-                    <option>5 Bob</option>
-                </select>
-
             </div>
             
             <div class="form-group">
-                <input type="text" class="form-control" placeholder="Write the nature of the log here" aria-label="Username" aria-describedby="numbered_value">
+                {% if page.event_table_name == "event_value_number"%}
+                    <input type="number" name="number_value" class="form-control" placeholder="{{page.form.placeholder}}" aria-label="Username" aria-describedby="numbered_value">
+                {% endif %}
+
+                {% if page.event_table_name == "event_value_string" %}
+                <input type="number" name="string_value" class="form-control" placeholder="{{page.form.placeholder}}" aria-label="Username" aria-describedby="numbered_value">
+                {% endif %}
             </div>
             
             <button type="submit" class="btn btn-primary">Create</button>

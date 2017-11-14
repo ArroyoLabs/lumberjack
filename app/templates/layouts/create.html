@@ -18,6 +18,15 @@
         <small id="emailHelp" class="form-text text-muted">Please insert description of the event in detail</small>
       </div>
 
+      <div class="form-group btn-group" data-toggle="buttons">
+        <label class="btn btn-secondary active">
+          <input type="radio" name="event_table_name" value="event_value_string" id="string-button" autocomplete="off" checked> String
+        </label>
+        <label class="btn btn-secondary">
+          <input type="radio" name="event_table_name" value="event_value_number" id="integer-button" autocomplete="off"> Integer
+        </label>
+      </div>
+
       <div class="form-group">
         <label>Unit of Value</label>
         <input name="unit_value" class="form-control" placeholder="km, barrels, glass of 12oz beer">
