@@ -40,8 +40,8 @@ class EventController extends \erdiko\controllers\Web
         */
 
         $themeData['page'] =  [
-            'title' => "This is the Log Index Controller",
-            'description' => "This is where all the log that were previously created",
+            'title' => "Events Index",
+            'description' => "This is the index page of all the events that were created.",
             'logevents' => $logEvents
         ];
 
@@ -59,8 +59,8 @@ class EventController extends \erdiko\controllers\Web
         $themeData['theme'] = \erdiko\theme\Config::get($this->container->get('settings')['theme']);
 
         $themeData['page'] = [
-            'title' => "This is the Log Edit Controller",
-            'description' => "This is where all the log we want are to be created",
+            'title' => "Create Events",
+            'description' => "Define your new events here.",
 
         ];
 
@@ -128,8 +128,8 @@ class EventController extends \erdiko\controllers\Web
         $themeData['theme'] = \erdiko\theme\Config::get($this->container->get('settings')['theme']);
 
         $themeData['page'] = [
-            'title' => "This is the Log Edit Controller",
-            'description' => "This is where all the log we want are to be created",
+            'title' => "Edit Events",
+            'description' => "Edit your already created events here!",
             'event_id' => $eventId,
             'img_src' => $eventImg,
             'event_name' => $eventName,
@@ -236,8 +236,8 @@ class EventController extends \erdiko\controllers\Web
         if($eventTableName == "event_value_number") {
 
             $form = (object) array (
-                "name" => "Numbered Log",
-                "placeholder" => "Numbered Value"
+                "name" => "Numeric Log",
+                "placeholder" => "Numeric Value"
             );
 
         } else if($eventTableName == "event_value_string") {
