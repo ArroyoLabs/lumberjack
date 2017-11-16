@@ -25,7 +25,7 @@ return [
     ],
     'menus' => [
         'main' => [
-            ['title' => 'Log Menu', 'href' => '/event'],
+            ['title' => 'Event Menu', 'href' => '/event'],
             ['title' => 'Create', 'href' => '/event/create'],
 
         ],
