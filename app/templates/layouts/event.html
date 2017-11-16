@@ -8,19 +8,19 @@
 
     <!--TODO: find way to make the look more clean-->
     <div class="card-columns">
-      {% for log in page.logevents %}
+      {% for event in page.eventsList %}
       <div class="card">
-        <img class="card-img-top" src="{{log.image_src}}" alt="Card image cap">
+        <img class="card-img-top" src="{{event.image_src}}" alt="Card image cap">
         <div class="card-body">
-          <h4 class="card-title">{{log.name}}</h4>
-          <p class="card-text">{{log.description}}</p>
-          <a href="{{log.detail_href}}">
+          <h4 class="card-title">{{event.name}}</h4>
+          <p class="card-text">{{event.description}}</p>
+          <a href="{{event.detail_href}}">
             <button type="button" class="btn btn-primary" href="">
               See Details
             </button>
           </a>
 
-          <a href="{{log.update_href}}">
+          <a href="{{event.update_href}}">
             <button type="button" class="btn btn-secondary">
               Edit
             </button>
@@ -29,7 +29,7 @@
 
         </div>
         <div class="card-footer">
-          <small class="text-muted">{{log.latest_update}}</small>
+          <small class="text-muted">{{event.latest_update}}</small>
         </div>
       </div>
       {% endfor %}

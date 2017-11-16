@@ -15,7 +15,7 @@ class EventController extends \erdiko\controllers\Web
         $eventService = new \app\models\EventService($this->container->em);
         $events = $eventService->getEvents();
 
-        $logEvents = array();
+        $eventsList = array();
         foreach ($events as $event){
             $res['eventID'] = $event->getId();
             $res['description'] = $event->getDescription();
@@ -24,10 +24,10 @@ class EventController extends \erdiko\controllers\Web
             $res['update_href'] = '/event/update/' . $res['eventID'];
             $res['image_src'] = (!empty($event->getImage())) ? '/images/events/' . $event->getImage() : '/images/placeholder.png';
             $res['latest_update'] = "Last update by aPerson x minutes ago";
-            $logEvents[] = $res;
+            $eventsList[] = $res;
         }
 
-        $view = 'layouts/log.html';
+        $view = 'layouts/event.html';
         $themeData['theme'] = \erdiko\theme\Config::get($this->container->get('settings')['theme']);
 
         /*
@@ -42,7 +42,7 @@ class EventController extends \erdiko\controllers\Web
         $themeData['page'] =  [
             'title' => "Events Index",
             'description' => "This is the index page of all the events that were created.",
-            'logevents' => $logEvents
+            'eventsList' => $eventsList
         ];
 
         return $this->container->theme->render($response, $view, $themeData);
@@ -55,7 +55,7 @@ class EventController extends \erdiko\controllers\Web
     public function getCreate($request, $response, $args)
     {
 
-        $view = 'layouts/create.html';
+        $view = 'layouts/createevent.html';
         $themeData['theme'] = \erdiko\theme\Config::get($this->container->get('settings')['theme']);
 
         $themeData['page'] = [
@@ -107,7 +107,7 @@ class EventController extends \erdiko\controllers\Web
 
     public function getUpdate($request, $response, $args)
     {
-        $view = 'layouts/update.html';
+        $view = 'layouts/updateevent.html';
 
         $eventId = $args["param"];
 
@@ -206,7 +206,7 @@ class EventController extends \erdiko\controllers\Web
 
         //var_dump($entries); die('entries');
         $this->container->logger->debug("/controller");
-        $view = 'layouts/logdetail.html';
+        $view = 'layouts/eventdetail.html';
 
         $themeData['theme'] = \erdiko\theme\Config::get($this->container->get('settings')['theme']);
         
