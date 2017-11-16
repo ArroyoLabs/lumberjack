@@ -218,7 +218,6 @@ class EventController extends \erdiko\controllers\Web
             'description' => "Description of the log you just clicked yourself.",
             'entries' => $entries,
             'createlog_href' => '/log/create/' . $eventID
-        
         ];
     
         return $this->container->theme->render($response, $view, $themeData);

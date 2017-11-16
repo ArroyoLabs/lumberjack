@@ -51,8 +51,6 @@ class LogController extends \erdiko\controllers\Web
             'form'             => $form
         ];
 
-
-
         return $this->container->theme->render($response, $view, $themeData);
     }
 
