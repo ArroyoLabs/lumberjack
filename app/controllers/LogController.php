@@ -25,26 +25,27 @@ class LogController extends \erdiko\controllers\Web
 
         if($eventTableName == "event_value_number") {
 
-            $form = (object) array (
+            $form = array (
                 "name" => "Numeric Log",
                 "placeholder" => "Numeric Value"
             );
 
         } else if($eventTableName == "event_value_string") {
 
-            $form = (object) array (
+            $form = array (
                 "name" => "Status Log",
                 "placeholder" => "Write the nature of the log here"
             );
 
         }
 
+        $form["event_id"] = $eventID;
+
         $view = 'layouts/createlog.html';
 
         $themeData['theme'] = \erdiko\theme\Config::get($this->container->get('settings')['theme']);
 
         $themeData['page'] = [
-            'event_id'         => $eventID,
             'event_name'       => $eventDetails['event_name'],
             'eventdetail_href' => '/event/detail/' . $eventID,
             'event_table_name' => $eventTableName,
