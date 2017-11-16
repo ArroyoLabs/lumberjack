@@ -189,8 +189,11 @@ class EventController extends \erdiko\controllers\Web
     {
         $eventID = (int)$args['param'];
 
+        //var_dump($eventID); die('entries');
         $eventService = new \app\models\EventService($this->container->em);
         $eventDetails = $eventService->getEventDetail($eventID);
+
+        //var_dump($eventDetails); die('entries');
 
         $entries = array();
         foreach($eventDetails['logs'] as $detail) {
@@ -201,6 +204,7 @@ class EventController extends \erdiko\controllers\Web
             $entries[] = $res;
         }
 
+        //var_dump($entries); die('entries');
         $this->container->logger->debug("/controller");
         $view = 'layouts/logdetail.html';
 
@@ -219,5 +223,5 @@ class EventController extends \erdiko\controllers\Web
     
         return $this->container->theme->render($response, $view, $themeData);
     }
-    
+
 }

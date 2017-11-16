@@ -47,7 +47,7 @@ class LogController extends \erdiko\controllers\Web
             'event_id'         => $eventID,
             'event_name'       => $eventDetails['event_name'],
             'eventdetail_href' => '/event/detail/' . $eventID,
-            'event_table_name' => "event_value_number",
+            'event_table_name' => $eventTableName,
             'form'             => $form
         ];
 
@@ -58,13 +58,20 @@ class LogController extends \erdiko\controllers\Web
 
     public function postCreate($request, $response, $args)
     {
-        var_dump($_POST); die('post');
+        $now = time();
+        $date = date("Y-m-d h:i:s", $now);
 
-        //if number value, set values to event_value_number
+        $params = (object) array_filter($_POST);
 
-        //if string value, set values to event_value_string
+        //User id is hardcoded until users database is integrated
+        $params->user_id = 99;
+        $params->created_at = $date;
+        
 
+        $logService = new \app\models\LogService($this->container->em);
+        $logService->addLog($params);
 
+        $this->redirect('/event/detail/' . $params->event_id);
     }
 
 

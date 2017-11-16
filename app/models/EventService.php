@@ -144,14 +144,22 @@ class EventService
             throw new \Exception("Event is not found");
         }
 
-
         $eventName = $result["event"]->getName();
+        $eventType = $result["event"]->getEventTableName();
 
         $result["event_name"] = $eventName;
 
 
-        $result["logs"] = $this->_em->getRepository('app\entities\EventValueNumber')
-                         ->findBy(array("event_id" => $eventID), array('created_at' => 'DESC'));
+        //var_dump($eventType); die('eventType');
+
+        if($eventType == "event_value_number") {
+            $result["logs"] = $this->_em->getRepository('app\entities\EventValueNumber')
+                ->findBy(array("event_id" => $eventID), array('created_at' => 'DESC'));
+        } else if($eventType == "event_value_string") {
+            $result["logs"] = $this->_em->getRepository('app\entities\EventValueString')
+                ->findBy(array("event_id" => $eventID), array('created_at' => 'DESC'));
+        }
+        
 
         return $result; 
     }
