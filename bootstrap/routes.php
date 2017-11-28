@@ -19,4 +19,3 @@ $app->any('/log[/{action}]', \app\controllers\LogController::class)
 
 $app->any('/log/{action}/[{param}]', \app\controllers\LogController::class)
     ->setName('logactionparams');
-
