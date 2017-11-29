@@ -1,12 +1,13 @@
 {% extends "layouts/1column.html" %}
 
   {% block column1 %}
-    <h1>{{page.title}}</h1>
-    
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item active"><a href="/log">Home</a></li>
-        <li class="breadcrumb-item">Event Name</li>
-    </ol>
+
+    <div>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/event">Home</a></li>
+            <li class="breadcrumb-item active">{{page.event_name}}</li>
+        </ol>
+    </div>
 
     <table class="table table-striped">
         <thead>
@@ -26,5 +27,9 @@
             {% endfor %}
         </tbody>
     </table>
+
+    <a href="{{page.createlog_href}}">
+        <button class="btn btn-success">Add Event Log</button>
+    </a>
 
   {% endblock %}

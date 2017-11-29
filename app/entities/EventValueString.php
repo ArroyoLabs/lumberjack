@@ -58,7 +58,7 @@ namespace app\entities;
      *
      *
      */
-    public function getEventId($event_id)
+    public function getEventId()
     {
         return $this->event_id;
     }
@@ -76,7 +76,7 @@ namespace app\entities;
      *
      *
      */
-    public function getUsersId($users_id)
+    public function getUsersId()
     {
         return $this->users_id;
     }
@@ -94,7 +94,7 @@ namespace app\entities;
      *
      *
      */
-    public function getValue($value)
+    public function getValue()
     {
         return $this->value;
     }
@@ -112,7 +112,7 @@ namespace app\entities;
      *
      *
      */
-    public function getCreatedAt($created_at)
+    public function getCreatedAt()
     {
         return $this->created_at;
     }

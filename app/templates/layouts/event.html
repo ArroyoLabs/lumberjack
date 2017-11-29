@@ -1,0 +1,40 @@
+{% extends "layouts/1column.html" %}
+
+  {% block column1 %}
+    <h1>{{page.title}}</h1>
+
+    <div>{{page.description}}</div>
+
+
+    <!--TODO: find way to make the look more clean-->
+    <div class="card-columns">
+      {% for event in page.eventsList %}
+      <div class="card">
+        <img class="card-img-top" src="{{event.image_src}}" alt="Card image cap">
+        <div class="card-body">
+          <h4 class="card-title">{{event.name}}</h4>
+          <p class="card-text">{{event.description}}</p>
+          <a href="{{event.detail_href}}">
+            <button type="button" class="btn btn-primary" href="">
+              See Details
+            </button>
+          </a>
+
+          <a href="{{event.update_href}}">
+            <button type="button" class="btn btn-secondary">
+              Edit
+            </button>
+          </a>
+          
+
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">{{event.latest_update}}</small>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <br />
+
+  {% endblock %}
