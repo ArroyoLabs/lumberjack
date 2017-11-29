@@ -1,0 +1,16 @@
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <ul class="list-inline">
+            <li class="pull-right"><a href="#top">Back to top</a></li>
+            {% for item in theme.menus.footer %}
+              <li class="list-inline-item"><a href="{{item.href}}">{{item.title}}</a></li>
+            {% endfor %}
+          </ul>
+          <p class="pull-left">{{theme.application.copyright}} {{theme.application.full_name}}</p>
+          <p class="pull-right">Powered by <a href="https://github.com/ArroyoLabs/erdiko" target="_blank">Erdiko</a></p>
+        </div>
+      </div>
+    </div>
+  </footer>

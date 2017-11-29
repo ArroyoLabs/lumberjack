@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="{{application.language}}">
+<head>
+  {{ include('page/meta.html') }}
+  <title>{{page.title}}</title>
+  {{ include('page/styles.html') }}
+  {{ include('page/google_header.html') }}
+</head>
+<body>
+  {% block header %}
+  {{ include('page/header.html') }}
+  {{ include('components/messages.html') }}
+  {% endblock %}
+
+  <div class="container">
+
+    {% block body %}
+      <h1>{{page.title}}</h1>
+      <div>{{page.description}}</div>
+    {% endblock %}
+    
+  </div>
+
+  {% block footer %}
+    {{ include('page/footer.html') }}
+  {% endblock %}
+
+  {% block scripts %}
+    {{ include('page/scripts.html') }}
+    {{ include('page/google_body.html') }}
+  {% endblock %}
+</body>
+</html>

@@ -1,0 +1,35 @@
+{% extends "layouts/1column.html" %}
+
+  {% block column1 %}
+
+    <div>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/event">Home</a></li>
+            <li class="breadcrumb-item active">{{page.event_name}}</li>
+        </ol>
+    </div>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Time</th>
+                <th>User ID</th>
+                <th>Message</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for entry in page.entries  %}  
+            <tr>
+                <th>{{entry.time}}</th>
+                <td>{{entry.userID}}</td>
+                <td>{{entry.message}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{page.createlog_href}}">
+        <button class="btn btn-success">Add Event Log</button>
+    </a>
+
+  {% endblock %}

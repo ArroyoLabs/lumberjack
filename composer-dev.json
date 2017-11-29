@@ -1,0 +1,74 @@
+{
+    "name": "erdiko/erdiko",
+    "description": "A micro MVC framework built with Slim and Symfony components",
+    "keywords": ["microframework", "rest", "router", "psr7", "php7"],
+    "homepage": "http://erdiko.org",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "John Arroyo",
+            "email": "erdiko@arroyolabs.com",
+            "homepage": "http://www.arroyolabs.com/"
+        }
+    ],
+    "require": {
+        "php": ">=7.0",
+        "erdiko/core": "@dev",
+        "slim/slim": "^3.8",
+        "erdiko/theme": "@dev",
+        "erdiko/session": "@dev",
+        "erdiko/doctrine": "@dev",
+        "monolog/monolog": "^1.22"
+    },
+    "autoload" : {
+        "psr-4" : {
+            "app\\" : "app/",
+            "controllers\\" : "app/controllers/",
+            "services\\" : "app/services/",
+            "models\\" : "app/models/"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": ">=4.8 < 6.0"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+	  "scripts": {
+        "start": "php -S 0.0.0.0:8080 -t public public/index.php",
+        "test": "phpunit",
+        "erdiko": "docker-compose up -d"
+	  },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../theme",
+            "options": {
+                "symlink": true
+            }
+        },
+        {
+            "type": "path",
+            "url": "../core",
+            "options": {
+                "symlink": true
+            }
+        },
+        {
+            "type": "path",
+            "url": "../session",
+            "options": {
+                "symlink": true
+            }
+        },
+        {
+            "type": "path",
+            "url": "../doctrine",
+            "options": {
+                "symlink": true
+            }
+        }
+    ]
+}
